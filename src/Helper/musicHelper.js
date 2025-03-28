@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Replace with your actual YouTube Data API key
-const API_KEY = "YOUR_YOUTUBE_API_KEY";
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
 // Function to search for songs on YouTube
 export const searchSongs = async (query) => {

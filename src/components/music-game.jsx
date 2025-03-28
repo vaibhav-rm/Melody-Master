@@ -10,7 +10,7 @@ import VinylRecord from "./vinyl-record";
 import Leaderboard from "./leaderboard";
 import GameSettings from "./game-settings";
 import Confetti from "./confetti";
-import { searchSongs, getVideoUrl } from "../youtube_api/musicHelper"; // Import your helper functions
+import { searchSongs, getVideoUrl } from "../Helper/musicHelper"; // Import your helper functions
 
 // Sample players for multiplayer mode
 const PLAYERS = [

@@ -5,9 +5,13 @@ import RegisterPage from "./pages/RegisterPage"
 import DashboardPage from "./pages/DashboardPage"
 import ProfilePage from "./pages/ProfilePage"
 import PlayPage from "./pages/PlayPage"
+import useAuth from "./hooks/useAuth";
 import "./index.css"
 
 function App() {
+
+  const user = useAuth();
+
   return (
     <Router>
       <Routes>
@@ -15,7 +19,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile" element={user ? <ProfilePage /> : <LoginPage />} />
         <Route path="/play" element={<PlayPage />} />
         <Route path="/lobby/:lobbyId" element={<PlayPage />} />
       </Routes>

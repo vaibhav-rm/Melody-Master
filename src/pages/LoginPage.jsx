@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Music, Mail, Lock } from "lucide-react";
-import { auth } from "../firebase"; // Import Firebase auth
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInUser  } from "../Helper/firebaseHelper"; // Import the helper function
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,7 +22,7 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInUser (email, password);
       alert("You have successfully logged in");
       navigate("/dashboard");
     } catch (error) {

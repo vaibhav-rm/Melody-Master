@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Music, User, Mail, Lock } from "lucide-react";
-import { auth, db } from "../firebase"; // Import Firebase auth and db
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+import { registerUser  } from "../Helper/firebaseHelper"; // Import the helper function
 
 function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -37,16 +35,7 @@ function RegisterPage() {
     setIsLoading(true);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Store user details in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        username,
-        email,
-        createdAt: new Date(),
-      });
-
+      await registerUser (username, email, password);
       alert("Your account has been created");
       navigate("/dashboard");
     } catch (error) {
